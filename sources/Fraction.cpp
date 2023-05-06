@@ -5,11 +5,7 @@
  */
 
 #include "Fraction.hpp"
-#include <stdexcept>
 #include <cmath>
-#include <limits>
-#include <iomanip>
-#include <vector>
 #include <bits/stdc++.h>
 
 namespace ariel {
@@ -164,8 +160,8 @@ If the resulting fraction has a negative numerator and denominator, both values 
     Fraction Fraction::operator+(const Fraction &fraction) const {
         Fraction resultFraction;
         if (this->denominator == fraction.getDenominator()) {
-            long long checkNum = (long long) this->numerator + fraction.getNumerator();
-            long long checkDen = (long long) this->denominator;
+            long checkNum = (long) this->numerator + fraction.getNumerator();
+            long checkDen = (long) this->denominator;
             if (checkNum > INT_MAX || checkNum < INT_MIN || checkDen > INT_MAX || checkDen < INT_MIN) {
                 throw std::overflow_error("Error: multiplication overflow");
             } else {
@@ -173,9 +169,9 @@ If the resulting fraction has a negative numerator and denominator, both values 
                 resultFraction.setDenominator(this->denominator);
             }
         } else {
-            long long checkNum = (long long) this->numerator * fraction.getDenominator() +
+            long checkNum = (long) this->numerator * fraction.getDenominator() +
                                  fraction.getNumerator() * this->denominator;
-            long long checkDen = (long long) this->denominator * fraction.getDenominator();
+            long checkDen = (long) this->denominator * fraction.getDenominator();
             if (checkNum > INT_MAX || checkNum < INT_MIN || checkDen > INT_MAX || checkDen < INT_MIN) {
                 throw std::overflow_error("Error: multiplication overflow");
             }
@@ -196,8 +192,8 @@ If the resulting fraction has a negative numerator and denominator, both values 
     Fraction Fraction::operator-(const Fraction &fraction) const {
         Fraction resultFraction;
         if (this->denominator == fraction.getDenominator()) {
-            long long checkNum = (long long) this->numerator - fraction.getNumerator();
-            long long checkDen = (long long) this->denominator;
+            long checkNum = (long) this->numerator - fraction.getNumerator();
+            long checkDen = (long) this->denominator;
             if (checkNum > INT_MAX || checkNum < INT_MIN || checkDen > INT_MAX || checkDen < INT_MIN) {
                 throw std::overflow_error("Error: multiplication overflow");
 
@@ -205,9 +201,9 @@ If the resulting fraction has a negative numerator and denominator, both values 
             resultFraction.setNumerator(this->numerator - fraction.getNumerator());
             resultFraction.setDenominator(this->denominator);
         } else {
-            long long checkNum = (long long) this->numerator * fraction.getDenominator() -
+            long checkNum = (long) this->numerator * fraction.getDenominator() -
                                  fraction.getNumerator() * this->denominator;
-            long long checkDen = (long long) this->denominator * fraction.getDenominator();
+            long checkDen = (long) this->denominator * fraction.getDenominator();
             if (checkNum > INT_MAX || checkNum < INT_MIN || checkDen > INT_MAX || checkDen < INT_MIN) {
                 throw std::overflow_error("Error: multiplication overflow");
             }
@@ -227,8 +223,8 @@ If the resulting fraction has a negative numerator and denominator, both values 
 */
     Fraction Fraction::operator*(const Fraction &fraction) const {
         Fraction resultFraction;
-        long long checkNum = (long long) this->numerator * fraction.getNumerator();
-        long long checkDen = (long long) this->denominator * fraction.getDenominator()
+        long checkNum = (long) this->numerator * fraction.getNumerator();
+        long checkDen = (long) this->denominator * fraction.getDenominator();
         if (checkNum > INT_MAX || checkNum < INT_MIN || checkDen > INT_MAX || checkDen < INT_MIN) {
             throw std::overflow_error("Error: multiplication overflow");
         }
@@ -252,8 +248,8 @@ of the second fraction and vice versa, then reduces the resulting fraction to it
             throw std::runtime_error("Error: division by zero");
         }
         Fraction resultFraction;
-        long long checkNum = (long long) this->numerator * fraction.getDenominator();
-        long long checkDen = (long long) this->denominator * fraction.getNumerator();
+        long checkNum = (long) this->numerator * fraction.getDenominator();
+        long checkDen = (long) this->denominator * fraction.getNumerator();
         if (checkNum > INT_MAX || checkNum < INT_MIN || checkDen > INT_MAX || checkDen < INT_MIN) {
             throw std::overflow_error("Error: multiplication overflow");
         }
